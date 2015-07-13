@@ -125,7 +125,8 @@ public class LevelStats :MonoBehaviour
 		private bool
 				generate = false;
 		public string id;
-		//public bool reload = false;
+		
+
 		private void Awake ()
 		{
 				DontDestroyOnLoad (this);
@@ -165,7 +166,7 @@ public class LevelStats :MonoBehaviour
 
 		private void GetIU ()
 		{
-//				Debug.Log ("GET UI");
+
 				GiveUpScreen = (GameObject)Resources.Load ("Menus/GiveUpScreen");
 				LevelEndScreen = (GameObject)Resources.Load ("Menus/LevelEndScreen");
 				screen_ui = GameObject.Find ("Canvas");

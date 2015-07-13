@@ -1,22 +1,28 @@
-﻿using UnityEngine;
+﻿//Class which is attached to the enemy gameObject
+//Alters the appearance and behaviour of enemyObject based on 
+//each instances EnemyType variable.
+
+using UnityEngine;
 using System.Collections;
 
 [RequireComponent (typeof(Rigidbody2D))]
 
 public class Enemy : MonoBehaviour
-{
+{	
+		LevelStats level_stats;
 		private AudioSource audio_source;
 		private AudioClip shoot;
 		private AudioClip frog_jump;
 		private Animator anim;
 		private bool facingRight = false; // For determining which way the player is currently facing.
 		private PlayerMovement2D player;
-		LevelStats level_stats;
+		
 
 
 		//walker
 		public float speed;
 		private float move = -1.0f;
+
 		//jumper
 		public float jump_power;
 		public float jump_angle;
@@ -33,19 +39,19 @@ public class Enemy : MonoBehaviour
 		public LayerMask	whatIsPlayer;
 		
 
-		//public Vector2 VELOCITYNTHAT;
+		//Current movement direction of enemy gameObject
 		public enum MoveDirection
 		{
 				Left,
 				Right
 		}
-
+	
 		public enum EnemyType
 		{
 				Walker,
 				Jumper,
 				Shooter,
-				Null // Null is required for my generation method
+				Null // Null is required for generation method
 		}
 		
 		public EnemyType enemyType;
