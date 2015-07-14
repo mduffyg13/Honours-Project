@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 //using System;
@@ -69,9 +69,9 @@ public class LevelManager : MonoBehaviour
 
 				
 				//Reduce number of gaps
-				if (gap_number_Actual > level_stats.gap_number) {
+				if (gap_number_Actual > level_stats.gapNumber) {
 				
-						gapPlaformManager.ReduceGaps (level_stats.gap_number);
+						gapPlaformManager.ReduceGaps (level_stats.gapNumber);
 						full_level = gapPlaformManager.GetUpdatedMap ();
 						plaform_number_Actual = gapPlaformManager.GetTotalPlatforms ();
 						gap_average_length_Actual = gapPlaformManager.gap_average;
@@ -79,8 +79,8 @@ public class LevelManager : MonoBehaviour
 				}
 
 				//Increase number of gaps
-				if (gap_number_Actual < level_stats.gap_number) {
-						gapPlaformManager.IncreaseGaps (level_stats.gap_number);
+				if (gap_number_Actual < level_stats.gapNumber) {
+						gapPlaformManager.IncreaseGaps (level_stats.gapNumber);
 				}
 
 				//Find average gap length in level 
@@ -121,8 +121,8 @@ public class LevelManager : MonoBehaviour
 		private void InitGenValues ()
 		{
 				axiom = level_stats.Axiom;
-				gap_number = level_stats.gap_number;
-				gap_average_length = level_stats.gap_average_length;
+				gap_number = level_stats.gapNumber;
+				gap_average_length = level_stats.gapAverageLength;
 		}
 	
 		//Create level

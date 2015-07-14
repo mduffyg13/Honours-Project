@@ -48,15 +48,15 @@ public class EnemyManager : MonoBehaviour
 
 			for (int i = 0; i < level_length; i++) {
 				for (int j = 0; j< level_height; j++) {
-					if (levelMap [i, j].isEnemySpawn ()) {
+					if (levelMap [i, j].IsEnemySpawn ()) {
 
 						//Place spawn if current horizontal tile is past the starting range plus offset
 						//AND number of tiles has passed between spawn placement
-						if (i > level_stats.start_range + levelLoopOffset && tiles_since_last <= 0) {
+						if (i > level_stats.startRange + levelLoopOffset && tiles_since_last <= 0) {
 					
 							if (enemy_index < enemy_order.Length) {
 								enemySpawnPoint = (GameObject)Instantiate (enemy_spawn, new Vector3 (levelMap [i, j].tilePos.x, levelMap [i, j].tilePos.y, 0.0f), Quaternion.identity);
-								enemySpawnPoint.GetComponent<EnemySpawnScript> ().type = enemy_order [enemy_index];
+								enemySpawnPoint.GetComponent<EnemySpawnScript> ().enemyType = enemy_order [enemy_index];
 																
 								placed_spawns++;
 								tiles_since_last = (int)dynamic_range;																
@@ -76,9 +76,9 @@ public class EnemyManager : MonoBehaviour
 	private void MakeOrder ()
 	{
 		enemy_order = new Enemy.EnemyType[level_stats.enemyNumberOf];
-		noOfWalkers = level_stats.enemy_walk_no;
-		noOfJumpers = level_stats.enemy_jump_no;
-		noOfFlyers = level_stats.enemy_fly_no;
+		noOfWalkers = level_stats.enemyWalkNo;
+		noOfJumpers = level_stats.enemyJumpNo;
+		noOfFlyers = level_stats.enemyFlyNo;
 
 		for (int i = 0; i < level_stats.enemyNumberOf; i++) {
 			

@@ -129,7 +129,7 @@ public class PlayerMovement2D : MonoBehaviour
 										x_velocity = x_velocity + acceleration;
 								}
 
-								levelStats.time_moving_right += Time.deltaTime;
+								levelStats.timeMovingRight += Time.deltaTime;
 
 						} else if (!grounded && !wall_right) {
 								dir = 1.0f;
@@ -138,7 +138,7 @@ public class PlayerMovement2D : MonoBehaviour
 										x_velocity = x_velocity + acceleration / reduced_air_control;
 								}
 								//moving = true;
-								levelStats.time_moving_right += Time.deltaTime;
+								levelStats.timeMovingRight += Time.deltaTime;
 						}
 
 				} else if (Input.GetKey (KeyCode.LeftArrow)) {
@@ -152,7 +152,7 @@ public class PlayerMovement2D : MonoBehaviour
 										x_velocity = x_velocity + acceleration;
 								}
 
-								levelStats.time_moving_left += Time.deltaTime;
+								levelStats.timeMovingLeft += Time.deltaTime;
 
 						} else if (!grounded && !wall_left) {
 								dir = -1.0f;
@@ -160,7 +160,7 @@ public class PlayerMovement2D : MonoBehaviour
 								if (x_velocity < max_velocity) {
 										x_velocity = x_velocity + acceleration / reduced_air_control;
 								}
-								levelStats.time_moving_right += Time.deltaTime;
+								levelStats.timeMovingRight += Time.deltaTime;
 						}
 				} else {
 						if (x_velocity > 0) {
@@ -382,7 +382,7 @@ public class PlayerMovement2D : MonoBehaviour
 				if (collider.name == "EnemyKillCheck") {
 						audio_source.PlayOneShot (enemy_death, 10.0f);
 						//Debug.Log ("Enemy Killed by head");
-						levelStats.kills++;
+						levelStats.killsTotal++;
 						y_velocity = 0;
 						y_velocity += kill_bounce;
 						//Debug.Log("Enemy Killed: " + collider.gameObject.transform.parent.gameObject.name);
@@ -390,13 +390,13 @@ public class PlayerMovement2D : MonoBehaviour
 						string enemyType = collider.gameObject.transform.parent.gameObject.name;
 						switch (enemyType) {
 						case "Walker":
-								levelStats.kills_walker++;
+								levelStats.killsWalker++;
 								break;
 						case "Jumper":
-								levelStats.kills_jumper++;
+								levelStats.killsJumper++;
 								break;
 						case "Shooter":
-								levelStats.kills_shooter++;
+								levelStats.killsShooter++;
 								break;
 						}
 
@@ -418,7 +418,7 @@ public class PlayerMovement2D : MonoBehaviour
 		private void CheckFallDeath ()
 		{
 				if (transform.position.y < -5) {
-						levelStats.deaths_by_fall++;
+						levelStats.deathsByFall++;
 						Die ();
 				}
 
@@ -429,13 +429,13 @@ public class PlayerMovement2D : MonoBehaviour
 				//Increment player stat based on calling object
 				switch (enemy) {
 				case Enemy.EnemyType.Walker:
-						levelStats.deaths_by_walker++;
+						levelStats.deathsByWalker++;
 						break;
 				case Enemy.EnemyType.Jumper:
-						levelStats.deaths_by_jumper++;
+						levelStats.deathsByJumper++;
 						break;
 				case Enemy.EnemyType.Shooter:
-						levelStats.deaths_by_shooter++;
+						levelStats.deathsByShooter++;
 						break;
 
 				}
@@ -445,7 +445,7 @@ public class PlayerMovement2D : MonoBehaviour
 
 		private void Die ()
 		{
-				levelStats.total_level_time += Time.timeSinceLevelLoad;
+				levelStats.totalLevelTime += Time.timeSinceLevelLoad;
 				levelStats.deaths++;
 				Debug.Log ("Player Dead");
 				//level_logic.Reload ();

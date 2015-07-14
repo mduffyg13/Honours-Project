@@ -1,4 +1,4 @@
-﻿//Class which is attached to the enemy gameObject
+//Class which is attached to the enemy gameObject
 //Alters the appearance and behaviour of enemyObject based on 
 //each instances EnemyType variable.
 
@@ -77,10 +77,10 @@ public class Enemy : MonoBehaviour
 	void Start ()
 	{
 
-		speed = level_stats.enemy_speed;
-		jump_power = level_stats.enemy_jump_power;
-		jump_timer = level_stats.enemy_jump_timer;
-		shot_timer = level_stats.enemy_shot_timer;
+		speed = level_stats.enemySpeed;
+		jump_power = level_stats.enemyJumpPower;
+		jump_timer = level_stats.enemyJumpTimer;
+		shot_timer = level_stats.enemyShotTimer;
 		
 		moveDirection = MoveDirection.Left;
 		groundCheck = transform.Find ("GroundCheck");
@@ -335,7 +335,7 @@ public class Enemy : MonoBehaviour
 
 		if (shot_timer < 0) {
 			pause = true;
-			shot_timer = level_stats.enemy_shot_timer;
+			shot_timer = level_stats.enemyShotTimer;
 			Shoot ();
 		}
 
@@ -375,7 +375,7 @@ public class Enemy : MonoBehaviour
 
 		int shots = 4;
 
-		if (level_stats.enemy_shot_difficulty == 1) {
+		if (level_stats.enemyShotDifficulty == 1) {
 			shots = 8;
 		}
 				
@@ -396,7 +396,7 @@ public class Enemy : MonoBehaviour
 		shot_dir [2] = -Vector3.up;
 		shot_dir [3] = -Vector3.right;
 			
-		if (level_stats.enemy_shot_difficulty == 1) {
+		if (level_stats.enemyShotDifficulty == 1) {
 
 			shot_spawn [4] = new Vector3 (transform.position.x + shot_radius, transform.position.y + shot_radius, 0.0f);
 			shot_spawn [5] = new Vector3 (transform.position.x + shot_radius, transform.position.y - shot_radius, 0.0f);
