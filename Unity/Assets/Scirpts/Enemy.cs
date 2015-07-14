@@ -20,21 +20,21 @@ public class Enemy : MonoBehaviour
 
 
 		//walker
-		public float speed;
+		private float speed = 3.0f;
 		private float move = -1.0f;
 
 		//jumper
-		public float jump_power;
-		public float jump_angle;
-		public float jump_timer;
+		private float jump_power = 250.0f;
+		//public float jump_angle = 90.0f;
+		private float jump_timer = 100.0f;
 		private float jump_counter; 
 
 		//Shooter
 		private float shot_radius = 0.3f;
-		public float	shot_timer;
+		private float	shot_timer = 100.0f;
 		private Transform groundCheck; // A position marking where to check if the player is grounded.
-		public float groundedRadius = .2f; // Radius of the overlap circle to determine if grounded
-		public bool grounded = false; // Whether or not the player is grounded.
+		public float groundedRadius = 0.2f; // Radius of the overlap circle to determine if grounded
+		public bool grounded = false; 
 		public LayerMask	whatIsGround;
 		public LayerMask	whatIsPlayer;
 		
@@ -143,8 +143,6 @@ public class Enemy : MonoBehaviour
 		
 				}
 
-
-				
 				if (transform.position.y < -5.0f || transform.position.x < -5.0f) {
 						Destroy (gameObject);
 				}
@@ -211,8 +209,6 @@ public class Enemy : MonoBehaviour
 										}
 								}
 
-
-				
 								if (edge || wall) {
 									
 										move *= -1.0f;

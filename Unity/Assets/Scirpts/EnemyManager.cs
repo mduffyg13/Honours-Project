@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//Class which loads enemy spawn points into finished level
+
+using UnityEngine;
 using System.Collections;
 
 public class EnemyManager : MonoBehaviour
@@ -14,6 +16,7 @@ public class EnemyManager : MonoBehaviour
 		public int walkers;
 		public int jumpers;
 		public int flyers;
+		public float dynamic_range = 0.0f;
 
 		void Awake ()
 		{
@@ -95,7 +98,7 @@ public class EnemyManager : MonoBehaviour
 				levelMap = levelIn;
 		}
 
-		public float dynamic_range = 0.0f;
+		
 
 		public void LoadEnemySpawns ()
 		{
